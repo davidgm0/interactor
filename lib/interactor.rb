@@ -115,7 +115,7 @@ module Interactor
     run!
   rescue Failure => e
     if context.object_id != e.context.object_id
-      @context = e.context
+      @context = e.context.nil? ? context : e.context
     end
     @context.failure = true
   end
